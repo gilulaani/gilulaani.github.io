@@ -30,12 +30,12 @@
 	</header>
 
 	<main id="main">
-		<section class="hero">
+		<section class="hero grid-bg">
 			<div class="container">
 				<div class="badge">DEV-FIRST</div>
 				<h1>
 					Build faster with
-					<span class="gradient">Gill's Plugins</span>
+					<span class="gradient moving-gradient">Gill's Plugins</span>
 				</h1>
 				<p class="subhead">
 					A curated set of developer-grade plugins crafted by Gillani. Minimal APIs, powerful defaults, and zero fluff.
@@ -44,14 +44,10 @@
 					<a class="btn btn-primary" href="#plugins" data-scroll="#plugins">Explore Plugins</a>
 				</div>
 				<div class="terminal" aria-label="Install command">
-					<code id="installCmd">npm i @gill/workspace</code>
+					<code id="installCmd">mvn clean package - @gill/workspace</code>
 				</div>
 			</div>
 			<div class="glow" aria-hidden="true"></div>
-			<button class="scroll-down" data-scroll="#plugins" aria-label="Scroll to featured plugins">
-				<span class="text">Scroll down</span>
-				<span class="mouse">🖱️</span>
-			</button>
 		</section>
 
 		<section id="plugins" class="plugins section reveal">
