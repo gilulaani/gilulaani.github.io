@@ -135,45 +135,7 @@ img, svg { display: inline-block; vertical-align: middle; }
 }
 .terminal code { color: #c9d1d9; }
 
-/* Scroll-down mouse button */
-.scroll-down {
-	position: absolute;
-	left: 50%; bottom: 18px; transform: translateX(-50%);
-	appearance: none; background: transparent; color: var(--text-1);
-	border: none;
-	padding: 0;
-	cursor: pointer;
-	opacity: 0.9;
-	transition: opacity .2s ease;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 4px;
-}
-.scroll-down:hover { opacity: 1; }
-.scroll-down .text { 
-	font-size: 10px; 
-	letter-spacing: 0.5px; 
-	color: var(--text-1);
-	background: linear-gradient(90deg, var(--text-1) 0%, #ffffff 50%, var(--text-1) 100%);
-	background-size: 200% 100%;
-	-webkit-background-clip: text;
-	background-clip: text;
-	-webkit-text-fill-color: transparent;
-	animation: gradient-slide 3s ease-in-out infinite;
-}
-.scroll-down .mouse { font-size: 18px; animation: bounce 2s infinite; }
 
-@keyframes bounce {
-	0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-	40% { transform: translateY(-4px); }
-	60% { transform: translateY(-2px); }
-}
-
-@keyframes gradient-slide {
-	0% { background-position: 200% 0; }
-	100% { background-position: -200% 0; }
-}
 
 /* Sections */
 .section { padding: 72px 0; }
@@ -276,6 +238,34 @@ img, svg { display: inline-block; vertical-align: middle; }
 	filter: blur(24px);
 }
 
+/* Grid background for hero section - refined */
+.hero.grid-bg {
+	position: relative;
+	overflow: hidden;
+}
+.hero.grid-bg::before {
+	content: "";
+	position: absolute;
+	top: 0; left: 0; right: 0; bottom: 0;
+	z-index: 0;
+	pointer-events: none;
+	background-image:
+		linear-gradient(rgba(120,160,255,0.08) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(120,160,255,0.08) 1px, transparent 1px),
+		linear-gradient(to bottom, rgba(13,17,23,0) 80%, var(--bg-0) 100%);
+	background-size: 40px 40px, 40px 40px, 100% 100%;
+	background-position: 0 0, 0 0, 0 0;
+}
+.hero.grid-bg > * {
+	position: relative;
+	z-index: 1;
+}
+@media (max-width: 600px) {
+	.hero.grid-bg::before {
+		background-size: 24px 24px, 24px 24px, 100% 100%;
+	}
+}
+
 /* Responsive */
 @media (max-width: 900px) {
 	.grid { grid-template-columns: repeat(6, 1fr); }
@@ -286,3 +276,17 @@ img, svg { display: inline-block; vertical-align: middle; }
 	.site-header .container { height: 56px; }
 	.nav a { display: none; }
 }
+
+.moving-gradient {
+  background: linear-gradient(90deg, #58a6ff 0%, #79c0ff 50%, #a5d6ff 100%);
+  background-size: 100% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes gradient-move {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
