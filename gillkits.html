@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@gill/gillkits — Minecraft Kit Plugin Documentation</title>
+	<meta name="description" content="Documentation for @gill/gillkits - A powerful Minecraft kit plugin with advanced features and easy configuration." />
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="styles.css" />
+	<link rel="stylesheet" href="docs.css" />
+	<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%23121a22'/><text x='50' y='62' font-size='54' text-anchor='middle' fill='%2390e0ef' font-family='JetBrains Mono, monospace'>G</text></svg>">
+</head>
+<body>
+	<header class="site-header">
+		<div class="container">
+			<div class="brand">
+				<span class="logo" aria-hidden="true">{}</span>
+				<span class="brand-name">Gill's Workspace</span>
+			</div>
+			<nav class="nav">
+				<a href="index.html">← Back to Home</a>
+				<button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">/* */</button>
+			</nav>
+		</div>
+	</header>
+
+	<main class="docs-main">
+		<aside class="sidebar">
+			<nav class="docs-nav">
+				<h3>Contents</h3>
+				<ul>
+					<li><a href="#overview">Overview</a></li>
+					<li><a href="#installation">Installation</a></li>
+					<li><a href="#configuration">Configuration</a></li>
+					<li><a href="#commands">Commands</a></li>
+					<li><a href="#examples">Examples</a></li>
+					<li><a href="#troubleshooting">Troubleshooting</a></li>
+				</ul>
+			</nav>
+		</aside>
+
+		<article class="docs-content">
+			<header class="docs-header">
+				<h1>@gill/gillkits</h1>
+				<p class="subtitle">Powerful Minecraft Kit Plugin</p>
+				<div class="meta">
+					<span class="version">v1.0.0</span>
+					<span class="tag">Minecraft</span>
+					<span class="tag">Plugin</span>
+				</div>
+			</header>
+
+			<section id="overview">
+				<h2>Overview</h2>
+				<p><code>@gill/gillkits</code> is a high-performance Minecraft plugin that provides advanced kit management capabilities. Built with modern Java practices, it offers:</p>
+				
+				<ul>
+					<li><strong>Lightning Fast:</strong> Optimized for performance with minimal server impact</li>
+					<li><strong>Easy Configuration:</strong> Simple YAML-based configuration</li>
+					<li><strong>Advanced Features:</strong> Cooldowns, permissions, custom messages</li>
+					<li><strong>Multi-World:</strong> Support for multiple worlds and servers</li>
+				</ul>
+
+				<div class="download-section">
+					<a href="https://cdn.discordapp.com/attachments/1410918824437350451/1411030236359036958/GillKits.jar?ex=68b32bd0&is=68b1da50&hm=0f1194e69a518c02cbff408da215a866e801132a286e588cfcb023f2935bed64&" class="btn btn-primary download-btn" download="GillKits-v1.0.0.jar">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path d="M12 16L7 11H17L12 16Z"/>
+							<path d="M12 4V16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+						</svg>
+						Download v1.0.0
+					</a>
+				</div>
+			</section>
+
+			<section id="installation">
+				<h2>Installation</h2>
+				
+				<h3>Prerequisites</h3>
+				<ul>
+					<li>Minecraft Server 1.21+</li>
+					<li>Java 11 or higher</li>
+					<li>Spigot/Paper server</li>
+				</ul>
+
+				<h3>Quick Start</h3>
+				<ol>
+					<li>Download the latest JAR from the button above</li>
+					<li>Place it in your <code>plugins/</code> folder</li>
+					<li>Restart your server</li>
+					<li>Configure <code>plugins/GillKits/config.yml</code></li>
+				</ol>
+
+				<div class="note">
+					<strong>Note:</strong> First startup will generate default configuration files.
+				</div>
+			</section>
+
+			<section id="configuration">
+				<h2>Configuration</h2>
+				
+				<p>The main configuration file is located at <code>plugins/GillKits/config.yml</code>:</p>
+
+				<pre><code class="language-yaml"># GillKits Configuration
+settings:
+  # Kit cooldown in seconds (0 = disabled)
+  cooldown: 3600
+  
+  # Whether to save kit data on player quit
+  save-on-quit: true
+  
+  # Default kit permission node
+  default-permission: "gillkits.use"
+
+# Kit definitions
+kits:
+  starter:
+    name: "Starter Kit"
+    cooldown: 1800
+    items:
+      - "DIAMOND_SWORD:1"
+      - "DIAMOND_PICKAXE:1"
+      - "DIAMOND_HELMET:1"
+      - "DIAMOND_CHESTPLATE:1"
+      - "DIAMOND_LEGGINGS:1"
+      - "DIAMOND_BOOTS:1"
+    
+  vip:
+    name: "VIP Kit"
+    cooldown: 7200
+    permission: "gillkits.vip"
+    items:
+      - "NETHERITE_SWORD:1"
+      - "NETHERITE_PICKAXE:1"
+      - "NETHERITE_HELMET:1"
+      - "NETHERITE_CHESTPLATE:1"
+      - "NETHERITE_LEGGINGS:1"
+      - "NETHERITE_BOOTS:1"</code></pre>
+			</section>
+
+			<section id="commands">
+				<h2>Commands</h2>
+				
+				<div class="command">
+					<h3><code>/gkits create [name]</code></h3>
+					<p>Create a new kit with the specified name.</p>
+					<p><strong>Permission:</strong> <code>gillkits.admin</code></p>
+				</div>
+
+				<div class="command">
+					<h3><code>/gkits remove [name]</code></h3>
+					<p>Remove an existing kit.</p>
+					<p><strong>Permission:</strong> <code>gillkits.admin</code></p>
+				</div>
+
+				<div class="command">
+					<h3><code>/gkits give [player] [kit]</code></h3>
+					<p>Give a kit to a player (bypasses cooldown).</p>
+					<p><strong>Permission:</strong> <code>gillkits.admin</code></p>
+				</div>
+
+				<div class="command">
+					<h3><code>/gkits edit [name]</code></h3>
+					<p>Edit an existing kit's configuration.</p>
+					<p><strong>Permission:</strong> <code>gillkits.admin</code></p>
+				</div>
+
+				<div class="command">
+					<h3><code>/gkits list</code></h3>
+					<p>List all available kits.</p>
+					<p><strong>Permission:</strong> <code>gillkits.list</code></p>
+				</div>
+
+				<div class="command">
+					<h3><code>/gkits reload</code></h3>
+					<p>Reload configuration files.</p>
+					<p><strong>Permission:</strong> <code>gillkits.admin</code></p>
+				</div>
+
+				<div class="command">
+					<h3><code>/gkits help</code></code></h3>
+					<p>Show help information and available commands.</p>
+					<p><strong>Permission:</strong> <code>gillkits.help</code></p>
+				</div>
+			</section>
+
+			<section id="examples">
+				<h2>Examples</h2>
+				
+				<h3>Custom Kit with Commands</h3>
+				<pre><code class="language-yaml">kits:
+  custom:
+    name: "Custom Kit"
+    cooldown: 86400  # 24 hours
+    permission: "gillkits.custom"
+    items:
+      - "DIAMOND_SWORD:1"
+      - "DIAMOND_PICKAXE:1"
+    commands:
+      - "say %player% claimed the custom kit!"
+      - "effect give %player% speed 30 1"</code></pre>
+
+				<h3>Kit with Enchanted Items</h3>
+				<pre><code class="language-yaml">kits:
+  enchanted:
+    name: "Enchanted Kit"
+    items:
+      - "DIAMOND_SWORD:1:unbreaking:3,sharpness:5"
+      - "DIAMOND_PICKAXE:1:efficiency:5,fortune:3"</code></pre>
+			</section>
+
+			<section id="troubleshooting">
+				<h2>Troubleshooting</h2>
+
+				<h3>Getting Help</h3>
+				<ul>
+					<li>Join our <a href="https://discord.gg/5zMvpYeq7J" target="_blank" rel="noopener noreferrer" class="discord-link">Discord</a> server</li>
+				</ul>
+			</section>
+		</article>
+	</main>
+
+	<footer class="site-footer">
+		<div class="container">
+			<span>© <span id="year"></span> Gill. Built for developers.</span>
+			<div class="socials">
+				<a href="https://discord.gg/5zMvpYeq7J" aria-label="Discord" target="_blank" rel="noopener noreferrer">
+					<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/></svg>
+				</a>
+			</div>
+		</div>
+	</footer>
+
+	<script src="script.js"></script>
+</body>
+</html>
