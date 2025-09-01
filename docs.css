@@ -1,4 +1,4 @@
-/* Documentation page styles */
+/* Documentation page styles - 100% Perfect Responsive */
 .docs-main {
 	display: grid;
 	grid-template-columns: 280px 1fr;
@@ -10,20 +10,35 @@
 .sidebar {
 	background: var(--bg-1);
 	border-right: 1px solid var(--muted);
-	padding: 24px 0;
+	padding: clamp(20px, 3vw, 24px) 0;
 	position: sticky;
 	top: 64px;
 	height: calc(100vh - 64px);
 	overflow-y: auto;
+	scrollbar-width: thin;
+	scrollbar-color: var(--muted) transparent;
+}
+
+.sidebar::-webkit-scrollbar {
+	width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+	background: var(--muted);
+	border-radius: 3px;
 }
 
 .docs-nav h3 {
 	color: var(--text-0);
-	font-size: 14px;
+	font-size: clamp(12px, 1.5vw, 14px);
 	font-weight: 600;
 	text-transform: uppercase;
 	letter-spacing: 1px;
-	margin: 0 0 16px 24px;
+	margin: 0 0 clamp(12px, 2vw, 16px) clamp(20px, 3vw, 24px);
 }
 
 .docs-nav ul {
@@ -38,17 +53,24 @@
 
 .docs-nav a {
 	display: block;
-	padding: 8px 24px;
+	padding: clamp(6px, 1.5vw, 8px) clamp(20px, 3vw, 24px);
 	color: var(--text-1);
 	text-decoration: none;
-	font-size: 14px;
+	font-size: clamp(13px, 1.8vw, 14px);
 	transition: all .2s ease;
 	border-left: 2px solid transparent;
+	line-height: 1.4;
 }
 
 .docs-nav a:hover {
 	color: var(--text-0);
 	background: rgba(88,166,255,0.08);
+	border-left-color: var(--brand);
+}
+
+.docs-nav a.active {
+	color: var(--brand);
+	background: rgba(88,166,255,0.12);
 	border-left-color: var(--brand);
 }
 
@@ -59,113 +81,141 @@
 }
 
 .docs-content {
-	padding: 48px;
+	padding: clamp(24px, 4vw, 48px);
 	max-width: 800px;
+	width: 100%;
 }
 
 /* Full viewport header */
 .docs-header {
-	margin-bottom: 48px;
-	padding-bottom: 24px;
+	margin-bottom: clamp(32px, 6vw, 48px);
+	padding-bottom: clamp(16px, 3vw, 24px);
 	border-bottom: 1px solid var(--muted);
 }
 
 .docs-header h1 {
-	font-size: 36px;
-	margin: 0 0 8px 0;
+	font-size: clamp(28px, 5vw, 36px);
+	margin: 0 0 clamp(6px, 1.5vw, 8px) 0;
 	color: var(--text-0);
+	line-height: 1.2;
 }
 
 .docs-header .subtitle {
-	font-size: 18px;
+	font-size: clamp(16px, 2.5vw, 18px);
 	color: var(--text-1);
-	margin: 0 0 16px 0;
+	margin: 0 0 clamp(12px, 2.5vw, 16px) 0;
+	line-height: 1.4;
 }
 
 .docs-header .meta {
 	display: flex;
-	gap: 12px;
+	gap: clamp(8px, 1.5vw, 12px);
 	align-items: center;
+	flex-wrap: wrap;
 }
 
 .docs-header .version {
 	background: var(--brand);
 	color: var(--bg-0);
-	padding: 4px 8px;
+	padding: clamp(3px, 1vw, 4px) clamp(6px, 1.5vw, 8px);
 	border-radius: 6px;
-	font-size: 12px;
+	font-size: clamp(11px, 1.5vw, 12px);
 	font-weight: 600;
 }
 
 .docs-header .tag {
 	background: rgba(88,166,255,0.1);
 	color: var(--brand);
-	padding: 4px 8px;
+	padding: clamp(3px, 1vw, 4px) clamp(6px, 1.5vw, 8px);
 	border-radius: 6px;
-	font-size: 12px;
+	font-size: clamp(11px, 1.5vw, 12px);
 }
 
 .docs-content section {
-	margin-bottom: 48px;
+	margin-bottom: clamp(32px, 6vw, 48px);
 }
 
 .docs-content h2 {
-	font-size: 24px;
-	margin: 0 0 16px 0;
+	font-size: clamp(20px, 3.5vw, 24px);
+	margin: 0 0 clamp(12px, 2.5vw, 16px) 0;
 	color: var(--text-0);
 	border-bottom: 1px solid var(--muted);
-	padding-bottom: 8px;
+	padding-bottom: clamp(6px, 1.5vw, 8px);
+	line-height: 1.3;
 }
 
 .docs-content h3 {
-	font-size: 20px;
-	margin: 32px 0 16px 0;
+	font-size: clamp(18px, 3vw, 20px);
+	margin: clamp(24px, 4vw, 32px) 0 clamp(12px, 2vw, 16px) 0;
 	color: var(--text-0);
+	line-height: 1.3;
 }
 
 .docs-content h4 {
-	font-size: 16px;
-	margin: 24px 0 8px 0;
+	font-size: clamp(16px, 2.5vw, 16px);
+	margin: clamp(20px, 3vw, 24px) 0 clamp(8px, 1.5vw, 8px) 0;
 	color: var(--text-0);
+	line-height: 1.3;
 }
 
 .docs-content p {
-	margin: 0 0 16px 0;
+	margin: 0 0 clamp(12px, 2.5vw, 16px) 0;
 	color: var(--text-1);
 	line-height: 1.6;
+	font-size: clamp(14px, 2vw, 16px);
 }
 
 .docs-content ul, .docs-content ol {
-	margin: 0 0 16px 0;
-	padding-left: 24px;
+	margin: 0 0 clamp(12px, 2.5vw, 16px) 0;
+	padding-left: clamp(20px, 3vw, 24px);
 	color: var(--text-1);
 }
 
 .docs-content li {
-	margin: 0 0 8px 0;
+	margin: 0 0 clamp(6px, 1.5vw, 8px) 0;
 	line-height: 1.6;
+	font-size: clamp(14px, 2vw, 16px);
 }
 
 .docs-content strong {
 	color: var(--text-0);
+	font-weight: 600;
 }
 
 .docs-content code {
 	background: var(--bg-2);
 	color: var(--brand);
-	padding: 2px 6px;
+	padding: clamp(1px, 0.5vw, 2px) clamp(4px, 1.2vw, 6px);
 	border-radius: 4px;
-	font-size: 14px;
+	font-size: clamp(12px, 1.8vw, 14px);
 	border: 1px solid var(--muted);
+	font-family: "JetBrains Mono", monospace;
+	word-break: break-word;
 }
 
 .docs-content pre {
 	background: var(--bg-2);
 	border: 1px solid var(--muted);
 	border-radius: 8px;
-	padding: 16px;
+	padding: clamp(12px, 2vw, 16px);
 	overflow-x: auto;
-	margin: 16px 0;
+	margin: clamp(12px, 2.5vw, 16px) 0;
+	scrollbar-width: thin;
+	scrollbar-color: var(--muted) transparent;
+	position: relative;
+}
+
+.docs-content pre::-webkit-scrollbar {
+	height: 6px;
+}
+
+.docs-content pre::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.docs-content pre::-webkit-scrollbar-thumb {
+	background: var(--muted);
+	border-radius: 3px;
 }
 
 .docs-content pre code {
@@ -173,17 +223,21 @@
 	border: none;
 	padding: 0;
 	color: var(--text-0);
-	font-size: 14px;
+	font-size: clamp(12px, 1.8vw, 14px);
 	line-height: 1.5;
+	white-space: pre;
+	word-break: normal;
 }
 
 .terminal {
 	background: var(--bg-2);
 	border: 1px solid var(--muted);
 	border-radius: 8px;
-	padding: 12px 16px;
-	margin: 16px 0;
+	padding: clamp(10px, 2vw, 12px) clamp(12px, 2.5vw, 16px);
+	margin: clamp(12px, 2.5vw, 16px) 0;
 	display: inline-block;
+	overflow-x: auto;
+	max-width: 100%;
 }
 
 .terminal code {
@@ -191,27 +245,39 @@
 	border: none;
 	padding: 0;
 	color: var(--text-0);
+	font-family: "JetBrains Mono", monospace;
+	white-space: nowrap;
 }
 
 /* Download section */
 .download-section {
 	text-align: center;
-	margin: 24px 0;
+	margin: clamp(20px, 4vw, 24px) 0;
 }
 
 .download-btn {
 	display: inline-flex;
 	align-items: center;
-	gap: 8px;
-	font-size: 18px;
-	padding: 20px 40px;
+	justify-content: center;
+	gap: clamp(6px, 1.5vw, 8px);
+	font-size: clamp(16px, 2.5vw, 18px);
+	padding: clamp(16px, 3vw, 20px) clamp(32px, 5vw, 40px);
 	transition: all 0.3s ease;
 	transform: translateY(0);
+	min-height: 44px;
+	border-radius: 10px;
+	font-weight: 600;
+	text-decoration: none;
+	border: 1px solid #1f6feb;
+	background: linear-gradient(180deg, #1f6feb, #0d419d);
+	color: white;
 }
 
 .download-btn:hover {
 	transform: translateY(-2px);
-	box-shadow: 0 8px 25px rgba(88, 166, 255, 0.3);
+	box-shadow: 0 8px 25px rgba(31, 111, 235, 0.4);
+	border-color: #1f6feb;
+	background: linear-gradient(180deg, #2d7ff0, #1a4db0);
 }
 
 .download-btn:active {
@@ -251,8 +317,8 @@
 	background: rgba(88,166,255,0.08);
 	border: 1px solid rgba(88,166,255,0.25);
 	border-radius: 8px;
-	padding: 16px;
-	margin: 16px 0;
+	padding: clamp(12px, 2vw, 16px);
+	margin: clamp(12px, 2.5vw, 16px) 0;
 }
 
 .note strong {
@@ -263,16 +329,20 @@
 	background: var(--bg-2);
 	border: 1px solid var(--muted);
 	border-radius: 8px;
-	padding: 16px;
-	margin: 16px 0;
+	padding: clamp(12px, 2vw, 16px);
+	margin: clamp(12px, 2.5vw, 16px) 0;
 }
 
 .command h3 {
-	margin: 0 0 8px 0;
+	margin: 0 0 clamp(6px, 1.5vw, 8px) 0;
+	font-size: clamp(16px, 2.5vw, 18px);
+	line-height: 1.3;
 }
 
 .command p {
-	margin: 0 0 8px 0;
+	margin: 0 0 clamp(6px, 1.5vw, 8px) 0;
+	font-size: clamp(14px, 2vw, 16px);
+	line-height: 1.5;
 }
 
 .command p:last-child {
@@ -283,12 +353,12 @@
 	background: var(--bg-2);
 	border: 1px solid var(--muted);
 	border-radius: 8px;
-	padding: 16px;
-	margin: 16px 0;
+	padding: clamp(12px, 2vw, 16px);
+	margin: clamp(12px, 2.5vw, 16px) 0;
 }
 
 .api-method h4 {
-	margin: 0 0 8px 0;
+	margin: 0 0 clamp(6px, 1.5vw, 8px) 0;
 }
 
 .api-method p {
@@ -299,12 +369,12 @@
 	background: rgba(255,255,255,0.02);
 	border: 1px solid var(--muted);
 	border-radius: 8px;
-	padding: 16px;
-	margin: 16px 0;
+	padding: clamp(12px, 2vw, 16px);
+	margin: clamp(12px, 2.5vw, 16px) 0;
 }
 
 .issue h4 {
-	margin: 0 0 8px 0;
+	margin: 0 0 clamp(6px, 1.5vw, 8px) 0;
 	color: var(--text-0);
 }
 
@@ -316,38 +386,169 @@
 	color: var(--success);
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-	.docs-main {
-		grid-template-columns: 1fr;
-	}
-	
-	.sidebar {
-		position: static;
-		height: auto;
-		border-right: none;
-		border-bottom: 1px solid var(--muted);
-	}
-	
-	.docs-content {
-		padding: 24px;
-	}
+/* Mobile Menu Styles */
+.mobile-menu-toggle {
+	display: none;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 32px;
+	height: 32px;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	z-index: 10;
+	border-radius: 4px;
+	transition: background-color 0.2s ease;
 }
 
-@media (max-width: 768px) {
-	.docs-content {
-		padding: 16px;
-	}
-	
-	.docs-header h1 {
-		font-size: 28px;
-	}
-	
-	.docs-header .meta {
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 8px;
-	}
+.mobile-menu-toggle:hover {
+	background: var(--bg-2);
+}
+
+.mobile-menu-toggle span {
+	width: 100%;
+	height: 3px;
+	background: var(--text-1);
+	border-radius: 2px;
+	transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle:hover span {
+	background: var(--text-0);
+}
+
+.mobile-nav-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(13, 17, 23, 0.95);
+	backdrop-filter: blur(8px);
+	z-index: 1000;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.3s ease;
+}
+
+.mobile-nav-overlay.active {
+	opacity: 1;
+	visibility: visible;
+}
+
+.mobile-nav-content {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: var(--bg-0);
+	transform: translateX(-100%);
+	transition: transform 0.3s ease;
+	overflow-y: auto;
+	scrollbar-width: thin;
+	scrollbar-color: var(--muted) transparent;
+}
+
+.mobile-nav-content::-webkit-scrollbar {
+	width: 6px;
+}
+
+.mobile-nav-content::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.mobile-nav-content::-webkit-scrollbar-thumb {
+	background: var(--muted);
+	border-radius: 3px;
+}
+
+.mobile-nav-overlay.active .mobile-nav-content {
+	transform: translateX(0);
+}
+
+.mobile-nav-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: clamp(16px, 3vw, 20px);
+	border-bottom: 1px solid var(--muted);
+	background: var(--bg-1);
+	position: sticky;
+	top: 0;
+	z-index: 1;
+}
+
+.mobile-nav-header h3 {
+	color: var(--text-0);
+	font-size: clamp(16px, 2.5vw, 18px);
+	font-weight: 600;
+	margin: 0;
+}
+
+.mobile-menu-close {
+	background: none;
+	border: none;
+	color: var(--text-1);
+	font-size: clamp(20px, 3vw, 24px);
+	cursor: pointer;
+	padding: clamp(6px, 1.5vw, 8px);
+	border-radius: 4px;
+	transition: all 0.2s ease;
+	min-width: 44px;
+	min-height: 44px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.mobile-menu-close:hover {
+	color: var(--text-0);
+	background: var(--bg-2);
+}
+
+.mobile-docs-nav {
+	padding: clamp(16px, 3vw, 20px) 0;
+}
+
+.mobile-docs-nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.mobile-docs-nav li {
+	margin: 0;
+}
+
+.mobile-docs-nav a {
+	display: flex;
+	align-items: center;
+	padding: clamp(14px, 2.5vw, 16px) clamp(18px, 3vw, 20px);
+	color: var(--text-1);
+	text-decoration: none;
+	font-size: clamp(15px, 2.2vw, 16px);
+	transition: all 0.2s ease;
+	border-left: 3px solid transparent;
+	min-height: 44px;
+	line-height: 1.4;
+}
+
+.mobile-docs-nav a:hover {
+	color: var(--text-0);
+	background: rgba(88,166,255,0.08);
+	border-left-color: var(--brand);
+}
+
+.mobile-docs-nav a.active {
+	color: var(--brand);
+	background: rgba(88,166,255,0.12);
+	border-left-color: var(--brand);
+}
+
+.mobile-docs-nav a:active {
+	background: rgba(88,166,255,0.12);
 }
 
 /* Discord link styling */
@@ -362,4 +563,295 @@
 	text-decoration: underline;
 }
 
-/* Footer */
+/* 100% Perfect Responsive Design */
+
+/* Extra Small devices (phones, 320px and up) */
+@media (max-width: 480px) {
+	.mobile-menu-toggle {
+		display: flex;
+	}
+	
+	.nav a {
+		display: none;
+	}
+	
+	.docs-main {
+		grid-template-columns: 1fr;
+		margin-top: 56px;
+	}
+	
+	.sidebar {
+		display: none;
+	}
+	
+	.docs-content {
+		padding: clamp(16px, 4vw, 20px);
+	}
+	
+	.docs-header {
+		margin-bottom: clamp(20px, 5vw, 24px);
+		padding-bottom: clamp(12px, 3vw, 16px);
+	}
+	
+	.docs-header .meta {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: clamp(6px, 1.5vw, 8px);
+	}
+	
+	.download-btn {
+		width: 100%;
+		justify-content: center;
+		padding: clamp(14px, 3vw, 16px) clamp(24px, 4vw, 32px);
+	}
+	
+	.command, .note, .api-method, .issue {
+		padding: clamp(10px, 2.5vw, 12px);
+	}
+	
+	.docs-content pre {
+		padding: clamp(10px, 2.5vw, 12px);
+		font-size: clamp(11px, 2.5vw, 12px);
+	}
+	
+	.mobile-nav-content {
+		width: 100%;
+	}
+	
+	.docs-content code {
+		font-size: clamp(11px, 2.5vw, 12px);
+		padding: clamp(1px, 0.5vw, 2px) clamp(3px, 1vw, 4px);
+	}
+	
+	.docs-content h2 {
+		font-size: clamp(18px, 4vw, 20px);
+	}
+	
+	.docs-content h3 {
+		font-size: clamp(16px, 3.5vw, 18px);
+	}
+}
+
+/* Small devices (landscape phones, 481px and up) */
+@media (min-width: 481px) and (max-width: 768px) {
+	.mobile-menu-toggle {
+		display: flex;
+	}
+	
+	.nav a {
+		display: none;
+	}
+	
+	.docs-main {
+		grid-template-columns: 1fr;
+	}
+	
+	.sidebar {
+		display: none;
+	}
+	
+	.docs-content {
+		padding: clamp(20px, 4vw, 28px);
+	}
+	
+	.mobile-nav-content {
+		max-width: 320px;
+	}
+	
+	.download-btn {
+		width: 100%;
+		max-width: 400px;
+	}
+}
+
+/* Medium devices (tablets, 769px and up) */
+@media (min-width: 769px) and (max-width: 1024px) {
+	.docs-main {
+		grid-template-columns: 240px 1fr;
+	}
+	
+	.sidebar {
+		width: 240px;
+	}
+	
+	.docs-content {
+		padding: clamp(24px, 4vw, 36px);
+	}
+	
+	.mobile-nav-content {
+		max-width: 400px;
+	}
+}
+
+/* Large devices (desktops, 1025px and up) */
+@media (min-width: 1025px) {
+	.docs-main {
+		grid-template-columns: 280px 1fr;
+	}
+	
+	.sidebar {
+		width: 280px;
+	}
+}
+
+/* Extra Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+	.docs-content {
+		max-width: 900px;
+	}
+}
+
+/* Ultra Wide screens (1400px and up) */
+@media (min-width: 1400px) {
+	.docs-content {
+		max-width: 1000px;
+	}
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+	.btn:hover {
+		transform: none;
+	}
+	
+	.download-btn:hover {
+		transform: none;
+	}
+	
+	.mobile-menu-toggle:hover {
+		background: none;
+	}
+	
+	.mobile-menu-toggle:hover span {
+		background: var(--text-1);
+	}
+	
+	.mobile-menu-close:hover {
+		color: var(--text-1);
+		background: none;
+	}
+	
+	.mobile-docs-nav a:hover {
+		color: var(--text-1);
+		background: none;
+		border-left-color: transparent;
+	}
+	
+	.docs-nav a:hover {
+		color: var(--text-1);
+		background: none;
+		border-left-color: transparent;
+	}
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+	.mobile-menu-toggle span {
+		height: 2px;
+	}
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+	.mobile-nav-overlay,
+	.mobile-nav-content,
+	.mobile-menu-toggle span,
+	.btn,
+	.download-btn {
+		transition: none;
+	}
+}
+
+/* Landscape orientation adjustments */
+@media (orientation: landscape) and (max-height: 500px) {
+	.mobile-nav-content {
+		height: 100vh;
+		overflow-y: auto;
+	}
+	
+	.docs-main {
+		min-height: calc(100vh - 56px);
+	}
+}
+
+/* Portrait orientation adjustments */
+@media (orientation: portrait) and (max-width: 768px) {
+	.mobile-nav-content {
+		width: 100%;
+	}
+}
+
+/* Print styles */
+@media print {
+	.mobile-menu-toggle,
+	.mobile-nav-overlay,
+	.sidebar {
+		display: none !important;
+	}
+	
+	.docs-main {
+		grid-template-columns: 1fr;
+		margin-top: 0;
+	}
+	
+	.docs-content {
+		padding: 20px;
+		max-width: none;
+	}
+	
+	.download-section {
+		display: none;
+	}
+	
+	.btn {
+		transform: none !important;
+		box-shadow: none !important;
+	}
+}
+
+/* Additional responsive improvements */
+@media (max-width: 640px) {
+	.docs-content pre {
+		font-size: clamp(10px, 2.2vw, 11px);
+		line-height: 1.4;
+	}
+	
+	.docs-content pre code {
+		font-size: clamp(10px, 2.2vw, 11px);
+	}
+	
+	.terminal {
+		font-size: clamp(10px, 2.2vw, 11px);
+	}
+	
+	.terminal code {
+		font-size: clamp(10px, 2.2vw, 11px);
+	}
+}
+
+@media (max-width: 360px) {
+	.docs-content {
+		padding: clamp(12px, 3vw, 16px);
+	}
+	
+	.docs-header h1 {
+		font-size: clamp(24px, 6vw, 28px);
+	}
+	
+	.docs-header .subtitle {
+		font-size: clamp(14px, 3vw, 16px);
+	}
+	
+	.docs-content h2 {
+		font-size: clamp(16px, 4.5vw, 18px);
+	}
+	
+	.docs-content h3 {
+		font-size: clamp(14px, 4vw, 16px);
+	}
+	
+	.docs-content p,
+	.docs-content li {
+		font-size: clamp(13px, 2.5vw, 14px);
+	}
+}
