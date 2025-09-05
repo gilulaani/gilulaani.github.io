@@ -38,6 +38,30 @@ body.light-theme .mobile-nav-overlay {
 body.light-theme .mobile-nav-content {
 	background: var(--bg-0);
 }
+
+body.light-theme .download-btn {
+	background: linear-gradient(180deg, #0969da, #0550ae);
+	border-color: #0969da;
+	color: #ffffff;
+}
+
+body.light-theme .download-btn:hover {
+	background: linear-gradient(180deg, #218bff, #0969da);
+	border-color: #0969da;
+	box-shadow: 0 8px 25px rgba(9, 105, 218, 0.4);
+}
+
+body.light-theme .back-home-btn {
+	background: #f6f8fa;
+	border-color: #d0d7de;
+	color: #24292f;
+}
+
+body.light-theme .back-home-btn:hover {
+	background: rgba(9, 105, 218, 0.05);
+	border-color: #0969da;
+	color: #0969da;
+}
 .docs-main {
 	display: grid;
 	grid-template-columns: 280px 1fr;
@@ -591,6 +615,39 @@ body.light-theme .mobile-nav-content {
 	background: rgba(88,166,255,0.12);
 }
 
+/* Mobile Back Home Button */
+.mobile-back-home {
+	padding: clamp(12px, 2vw, 16px) clamp(18px, 3vw, 20px);
+	border-bottom: 1px solid var(--muted);
+	margin-bottom: clamp(8px, 1.5vw, 12px);
+}
+
+.back-home-btn {
+	display: flex;
+	align-items: center;
+	gap: clamp(8px, 1.5vw, 10px);
+	padding: clamp(10px, 2vw, 12px) clamp(12px, 2.5vw, 16px);
+	background: var(--bg-2);
+	border: 1px solid var(--muted);
+	border-radius: 8px;
+	color: var(--text-0);
+	text-decoration: none;
+	font-size: clamp(14px, 2vw, 15px);
+	font-weight: 500;
+	transition: all 0.2s ease;
+	min-height: 44px;
+}
+
+.back-home-btn:hover {
+	background: rgba(88,166,255,0.08);
+	border-color: var(--brand);
+	color: var(--brand);
+}
+
+.back-home-btn svg {
+	flex-shrink: 0;
+}
+
 /* Discord link styling */
 .discord-link {
 	color: #8b5cf6 !important;
@@ -781,6 +838,12 @@ body.light-theme .mobile-nav-content {
 		color: var(--text-1);
 		background: none;
 		border-left-color: transparent;
+	}
+	
+	.back-home-btn:hover {
+		background: none;
+		border-color: var(--muted);
+		color: var(--text-1);
 	}
 }
 

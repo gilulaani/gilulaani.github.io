@@ -72,6 +72,18 @@ body.light-theme .theme-toggle:hover {
 	color: #24292f;
 }
 
+body.light-theme .btn-primary {
+	background: linear-gradient(180deg, #0969da, #0550ae);
+	border-color: #0969da;
+	color: #ffffff;
+}
+
+body.light-theme .btn-primary:hover {
+	background: linear-gradient(180deg, #218bff, #0969da);
+	border-color: #0969da;
+	color: #ffffff;
+}
+
 * { box-sizing: border-box; }
 html, body { height: 100%; }
 body {
