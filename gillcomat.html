@@ -3,15 +3,15 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>@gill/gillkits — Minecraft Kit Plugin Documentation</title>
-	<meta name="description" content="Documentation for @gill/gillkits - A powerful Minecraft kit plugin with advanced features and easy configuration." />
+	<title>@gill/gillcombat — Minecraft Kit Plugin Documentation</title>
+	<meta name="description" content="Documentation for @gill/gillcombat - A powerful Minecraft kit plugin with advanced features and easy configuration." />
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 	<link rel="stylesheet" href="styles.css" />
-	<link rel="stylesheet" href="gillkitsdocs.css" />
+	<link rel="stylesheet" href="gillcombatdocs.css" />
 	<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%23121a22'/><text x='50' y='62' font-size='54' text-anchor='middle' fill='%2390e0ef' font-family='JetBrains Mono, monospace'>G</text></svg>">
 </head>
 <body>
@@ -72,7 +72,7 @@
 
 		<article class="docs-content">
 			<header class="docs-header">
-				<h1>@gill/gillkits</h1>
+				<h1>@gill/gillcombat</h1>
 				<p class="subtitle">Powerful Minecraft Kit Plugin</p>
 				<div class="meta">
 					<span class="version">v1.0.0</span>
@@ -83,17 +83,19 @@
 
 			<section id="overview">
 				<h2>Overview</h2>
-				<p><code>@gill/gillkits</code> is a high-performance Minecraft plugin that provides advanced kit management capabilities. Built with modern Java practices, it offers:</p>
+				<p><code>@gill/gillcombat</code> is a robust Minecraft plugin that prevents combat logging, blocks commands during combat, and supports AFK detection, WorldGuard, and more. Perfect for PvP servers that want fair fights and no interruptions.</p>
 				
 				<ul>
-					<li><strong>Lightning Fast:</strong> Optimized for performance with minimal server impact</li>
-					<li><strong>Easy Configuration:</strong> Simple YAML-based configuration</li>
-					<li><strong>Advanced Features:</strong> Cooldowns, permissions, custom messages</li>
-					<li><strong>Multi-World:</strong> Support for multiple worlds and servers</li>
+					<li><strong>Combat Tagging:</strong> Prevents players from escaping combat unfairly</li>
+					<li><strong>Command Blocking:</strong> Disables specific commands while tagged</li>
+					<li><strong>World & Region Support:</strong> Disable tagging in certain worlds/regions</li>
+					<li><strong>AFK Detection:</strong> Marks inactive players and prevents abuse</li>
+					<li><strong>Customizable Messages:</strong> Full color code/message support</li>
+					<li><strong>Action Bar Countdown:</strong> Visual combat timer for players</li>
 				</ul>
 
 				<div class="download-section">
-					<a href="https://www.spigotmc.org/resources/gillkits-free-premium-kiteditor-plugin-1-21.128460" class="btn btn-primary download-btn" download="GillKits-v1.0.0.jar">
+					<a href="https://www.spigotmc.org/resources/gillcombat-free-premium-combat-plugin-1-21.128607" class="btn btn-primary download-btn" download="gillcombat-v1.0.0.jar">
 						<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 							<path d="M12 16L7 11H17L12 16Z"/>
 							<path d="M12 4V16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -118,7 +120,7 @@
 					<li>Download the latest JAR from the button above</li>
 					<li>Place it in your <code>plugins/</code> folder</li>
 					<li>Restart your server</li>
-					<li>Configure <code>plugins/GillKits/config.yml</code></li>
+					<li>Configure <code>plugins/GillCombat/config.yml</code></li>
 				</ol>
 
 				<div class="note">
@@ -129,114 +131,155 @@
 			<section id="configuration">
 				<h2>Configuration</h2>
 				
-				<p>The main configuration file is located at <code>plugins/GillKits/config.yml</code>:</p>
+				<p>The main configuration file is located at <code>plugins/GillCombat/config.yml</code>:</p>
 
-				<pre><code class="language-yaml"># GillKits Configuration
-settings:
-  # Kit cooldown in seconds (0 = disabled)
-  cooldown: 3600
-  
-  # Whether to save kit data on player quit
-  save-on-quit: true
-  
-  # Default kit permission node
-  default-permission: "gillkits.use"
-
-# Kit definitions
-kits:
-  starter:
-    name: "Starter Kit"
-    cooldown: 1800
-    items:
-      - "DIAMOND_SWORD:1"
-      - "DIAMOND_PICKAXE:1"
-      - "DIAMOND_HELMET:1"
-      - "DIAMOND_CHESTPLATE:1"
-      - "DIAMOND_LEGGINGS:1"
-      - "DIAMOND_BOOTS:1"
-    
-  vip:
-    name: "VIP Kit"
-    cooldown: 7200
-    permission: "gillkits.vip"
-    items:
-      - "NETHERITE_SWORD:1"
-      - "NETHERITE_PICKAXE:1"
-      - "NETHERITE_HELMET:1"
-      - "NETHERITE_CHESTPLATE:1"
-      - "NETHERITE_LEGGINGS:1"
-      - "NETHERITE_BOOTS:1"</code></pre>
+				<pre style="overflow-x: auto;"><code class="language-yaml"># gillcombat Configuration
+# List of worlds where tagging is disabled
+disabled-worlds: 
+- test
+					
+# List of WorldGuard region names where tagging is disabled
+disabled-regions:
+- test
+					
+# List of commands that tagged players cannot use
+disabled-commands:
+- /spawn
+- /hub
+- /lobby
+					
+# Duration (in seconds) a player remains tagged after being hit
+tag-duration: 15
+					
+# Time (in seconds) of inactivity before a player is marked AFK
+afk-timeout-seconds: 5
+					
+# Enable debug logging
+debug: false
+					
+# Enable action bar countdown display
+enable-action-bar: true
+					
+# Action bar update frequency (in ticks, 5 = 0.25 seconds)
+action-bar-update-frequency: 5
+					
+# Custom messages with color code support
+messages:
+tagged: '&c⚔ You have been tagged by {player}! ⚔'
+untagged: '&a✅ Combat tag has expired!'
+cannot-hit: '&c❌ You cannot hit this player while they are in combat!'
+reload: '&a✅ Config reloaded successfully!'
+afk-cant-hit: '&c❌ You cannot hit an AFK player!'
+combat-status: '&e⚔ Combat Status: {status}'
+combat-time-remaining: '&c⏰ You have {time} seconds remaining in combat!'
+afk-now: '&e💤 You are now marked as AFK. Move to return.'
+afk-back: '&7you''re no longer afk.'
+combat-actionbar: '&c⚔ Combat Tagged &7({time}s)'
+					
+# Sound played when trying to hit AFK players
+afk-hit-sound: ENTITY_EXPERIENCE_ORB_PICKUP</code></pre>
 			</section>
 
 			<section id="commands">
 				<h2>Commands</h2>
 				
 				<div class="command">
-					<h3><code>/gkits create [name]</code></h3>
-					<p>Create a new kit with the specified name.</p>
-					<p><strong>Permission:</strong> <code>gillkits.admin</code></p>
+					<h3><code>/gcombat reload</code></h3>
+					<p>Reload the plugin configuration.</p>
 				</div>
 
 				<div class="command">
-					<h3><code>/gkits remove [name]</code></h3>
-					<p>Remove an existing kit.</p>
-					<p><strong>Permission:</strong> <code>gillkits.admin</code></p>
+					<h3><code>/gcombat disableworld [world]</code></h3>
+					<p>Disable combat tagging in a specific world.</p>
 				</div>
 
 				<div class="command">
-					<h3><code>/gkits give [kit] [player]</code></h3>
-					<p>Give a kit to a player (bypasses cooldown).</p>
-					<p><strong>Permission:</strong> <code>gillkits.admin</code></p>
+					<h3><code>/gcombat enableworld [world]</code></h3>
+					<p>Enable combat tagging in a specific world.</p>
 				</div>
 
 				<div class="command">
-					<h3><code>/gkits edit [name]</code></h3>
-					<p>Edit an existing kit's configuration.</p>
-					<p><strong>Permission:</strong> <code>gillkits.admin</code></p>
+					<h3><code>/gcombat untag [player]</code></h3>
+					<p>Remove combat tag from a player.</p>
 				</div>
 
 				<div class="command">
-					<h3><code>/gkits list</code></h3>
-					<p>List all available kits.</p>
-					<p><strong>Permission:</strong> <code>gillkits.list</code></p>
+					<h3><code>/gcombat list</code></h3>
+					<p>List all currently tagged players.</p>
 				</div>
 
 				<div class="command">
-					<h3><code>/gkits reload</code></h3>
-					<p>Reload configuration files.</p>
-					<p><strong>Permission:</strong> <code>gillkits.admin</code></p>
+					<h3><code>/gcombat worldguard</code></h3>
+					<p>Check WorldGuard status.</p>
 				</div>
 
 				<div class="command">
-					<h3><code>/gkits help</code></h3>
-					<p>Show help information and available commands.</p>
-					<p><strong>Permission:</strong> <code>gillkits.help</code></p>
+					<h3><code>/tag</code></h3>
+					<p>Check your combat status.</p>
+				</div>
+			
+				<div class="command">
+					<h3><code>/combat</code></h3>
+					<p>Check your combat status.</p>
+				</div>
+			
+				<div class="command">
+					<h3><code>/combatpartners</code></h3>
+					<p>Show who you are currently in combat with.</p>
 				</div>
 			</section>
 
 			<section id="examples">
 				<h2>Examples</h2>
 				
-				<h3>Custom Kit with Commands</h3>
-				<pre><code class="language-yaml">kits:
-  custom:
-    name: "Custom Kit"
-    cooldown: 86400  # 24 hours
-    permission: "gillkits.custom"
-    items:
-      - "DIAMOND_SWORD:1"
-      - "DIAMOND_PICKAXE:1"
-    commands:
-      - "say %player% claimed the custom kit!"
-      - "effect give %player% speed 30 1"</code></pre>
+				<h3>Sample Configuration</h3>
+				<pre><code class="language-yaml">
+kits:
+# List of worlds where tagging is disabled
+disabled-worlds: 
+- test
+										
+# List of WorldGuard region names where tagging is disabled
+disabled-regions:
+- test
+										
+# List of commands that tagged players cannot use
+disabled-commands:
+- /spawn
+- /hub
+- /lobby
+										
+# Duration (in seconds) a player remains tagged after being hit
+tag-duration: 15
+										
+# Time (in seconds) of inactivity before a player is marked AFK
+afk-timeout-seconds: 5
+										
+# Enable debug logging
+debug: false
+										
+# Enable action bar countdown display
+enable-action-bar: true
+										
+# Action bar update frequency (in ticks, 5 = 0.25 seconds)
+action-bar-update-frequency: 5
+										
+# Custom messages with color code support
+messages:
+tagged: '&c⚔ You have been tagged by {player}! ⚔'
+untagged: '&a✅ Combat tag has expired!'
+cannot-hit: '&c❌ You cannot hit this player while they are in combat!'
+reload: '&a✅ Config reloaded successfully!'
+afk-cant-hit: '&c❌ You cannot hit an AFK player!'
+combat-status: '&e⚔ Combat Status: {status}'
+combat-time-remaining: '&c⏰ You have {time} seconds remaining in combat!'
+afk-now: '&e💤 You are now marked as AFK. Move to return.'
+afk-back: '&7you''re no longer afk.'
+combat-actionbar: '&c⚔ Combat Tagged &7({time}s)'
+										
+# Sound played when trying to hit AFK players
+afk-hit-sound: ENTITY_EXPERIENCE_ORB_PICKUP</code></pre>
 
-				<h3>Kit with Enchanted Items</h3>
-				<pre><code class="language-yaml">kits:
-  enchanted:
-    name: "Enchanted Kit"
-    items:
-      - "DIAMOND_SWORD:1:unbreaking:3,sharpness:5"
-      - "DIAMOND_PICKAXE:1:efficiency:5,fortune:3"</code></pre>
 			</section>
 
 			<section id="troubleshooting">
@@ -255,14 +298,14 @@ kits:
 				<div class="grid">
 					<article class="plugin">
 						<header>
-							<h3>@gill/gillcombat</h3>
+							<h3>@gill/gillkits</h3>
 							<div class="tags">
 								<span class="tag">Minecraft</span>
 							</div>
 						</header>
-						<p>Advanced combat plugin that prevents interruptions during player duels. No more interference when two players are fighting each other.</p>
+						<p>Powerful Minecraft kit plugin with advanced features, easy configuration, and smooth performance.</p>
 						<div class="actions">
-							<a class="link" href="gillcomat.html">Docs</a>
+							<a class="link" href="gillkits.html">Docs</a>
 						</div>
 					</article>
 				</div>
