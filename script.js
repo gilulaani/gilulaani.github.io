@@ -112,10 +112,17 @@ document.addEventListener('DOMContentLoaded', function() {
 	// Theme toggle functionality
     const themeToggle = document.getElementById('themeToggle');
     if (themeToggle) {
+        function updateThemeButton() {
+            const isLight = document.body.classList.contains('light-theme');
+            themeToggle.textContent = '/* */';
+            themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
+        }
+        
         themeToggle.addEventListener('click', function() {
             document.body.classList.toggle('light-theme');
             const isLight = document.body.classList.contains('light-theme');
             localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            updateThemeButton();
         });
         
         // Load saved theme
@@ -123,6 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (savedTheme === 'light') {
             document.body.classList.add('light-theme');
         }
+        updateThemeButton();
     }
     
     // Responsive image handling

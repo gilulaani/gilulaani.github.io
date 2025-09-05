@@ -1,4 +1,43 @@
 /* Documentation page styles - 100% Perfect Responsive */
+
+/* Light theme support for documentation */
+body.light-theme .docs-content pre {
+	background: #f6f8fa;
+	border-color: var(--muted);
+}
+
+body.light-theme .docs-content pre code {
+	color: #24292f;
+}
+
+body.light-theme .terminal {
+	background: #f6f8fa;
+	border-color: var(--muted);
+}
+
+body.light-theme .terminal code {
+	color: #24292f;
+}
+
+body.light-theme .command,
+body.light-theme .api-method,
+body.light-theme .issue {
+	background: #f6f8fa;
+	border-color: var(--muted);
+}
+
+body.light-theme .note {
+	background: rgba(9,105,218,0.05);
+	border-color: rgba(9,105,218,0.2);
+}
+
+body.light-theme .mobile-nav-overlay {
+	background: rgba(255,255,255,0.95);
+}
+
+body.light-theme .mobile-nav-content {
+	background: var(--bg-0);
+}
 .docs-main {
 	display: grid;
 	grid-template-columns: 280px 1fr;
@@ -225,8 +264,9 @@
 	color: var(--text-0);
 	font-size: clamp(12px, 1.8vw, 14px);
 	line-height: 1.5;
-	white-space: pre;
-	word-break: normal;
+	white-space: pre-wrap;
+	word-break: break-word;
+	overflow-wrap: break-word;
 }
 
 .terminal {
@@ -814,18 +854,27 @@
 	.docs-content pre {
 		font-size: clamp(10px, 2.2vw, 11px);
 		line-height: 1.4;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
 	}
 	
 	.docs-content pre code {
 		font-size: clamp(10px, 2.2vw, 11px);
+		white-space: pre-wrap;
+		word-break: break-word;
+		overflow-wrap: break-word;
 	}
 	
 	.terminal {
 		font-size: clamp(10px, 2.2vw, 11px);
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
 	}
 	
 	.terminal code {
 		font-size: clamp(10px, 2.2vw, 11px);
+		white-space: pre-wrap;
+		word-break: break-word;
 	}
 }
 
@@ -853,5 +902,16 @@
 	.docs-content p,
 	.docs-content li {
 		font-size: clamp(13px, 2.5vw, 14px);
+	}
+	
+	.docs-content pre {
+		font-size: clamp(9px, 2vw, 10px);
+		padding: clamp(8px, 2vw, 10px);
+		margin: clamp(8px, 2vw, 12px) 0;
+	}
+	
+	.docs-content pre code {
+		font-size: clamp(9px, 2vw, 10px);
+		line-height: 1.3;
 	}
 }

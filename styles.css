@@ -14,6 +14,64 @@
 	--shadow: 0 10px 30px rgba(0,0,0,0.35);
 }
 
+/* Light theme variables */
+body.light-theme {
+	/* GitHub Light base */
+	--bg-0: #ffffff; /* page */
+	--bg-1: #f6f8fa; /* sections */
+	--bg-2: #ffffff; /* cards/nav */
+	--text-0: #24292f; /* primary text */
+	--text-1: #656d76; /* muted text */
+	--brand: #0969da; /* GitHub blue */
+	--brand-2: #218bff; /* lighter blue */
+	--accent: #54aeff; /* accent gradient end */
+	--muted: #d0d7de; /* borders */
+	--success: #1a7f37; /* green */
+	--shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Light theme specific adjustments */
+body.light-theme .hero {
+	background: radial-gradient(600px 300px at 85% -10%, rgba(9,105,218,0.08), transparent),
+		linear-gradient(180deg, rgba(246,248,250,0.4), rgba(246,248,250,0));
+}
+
+body.light-theme .hero .glow {
+	background: radial-gradient(500px 220px at 60% 0%, rgba(9,105,218,0.1), transparent);
+}
+
+body.light-theme .hero.grid-bg::before {
+	background-image:
+		linear-gradient(rgba(9,105,218,0.06) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(9,105,218,0.06) 1px, transparent 1px),
+		linear-gradient(to bottom, rgba(246,248,250,0) 80%, var(--bg-0) 100%);
+}
+
+body.light-theme .terminal {
+	background: #f6f8fa;
+	border-color: var(--muted);
+}
+
+body.light-theme .terminal code {
+	color: #24292f;
+}
+
+body.light-theme .site-header {
+	background: rgba(255,255,255,0.8);
+}
+
+body.light-theme .theme-toggle {
+	background: #f6f8fa;
+	border-color: #d0d7de;
+	color: #24292f;
+}
+
+body.light-theme .theme-toggle:hover {
+	background: #ffffff;
+	border-color: #0969da;
+	color: #24292f;
+}
+
 * { box-sizing: border-box; }
 html, body { height: 100%; }
 body {
@@ -70,10 +128,13 @@ img, svg { display: inline-block; vertical-align: middle; }
 .nav a { color: var(--text-1); text-decoration: none; transition: color .2s ease; }
 .nav a:hover { color: var(--text-0); }
 .theme-toggle {
-	appearance: none; border: 1px solid var(--muted); background: var(--bg-2); color: var(--text-1);
+	appearance: none; border: 1px solid var(--muted); background: var(--bg-2); color: var(--text-0);
 	padding: 6px 10px; border-radius: 8px; cursor: pointer; transition: all .2s ease;
+	font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+	font-size: 12px;
+	font-weight: 500;
 }
-.theme-toggle:hover { border-color: var(--brand); color: var(--text-0); }
+.theme-toggle:hover { border-color: var(--brand); color: var(--text-0); background: var(--bg-1); }
 
 /* Hero */
 .hero {

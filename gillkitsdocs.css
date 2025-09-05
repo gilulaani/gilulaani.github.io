@@ -1,4 +1,43 @@
 /* Documentation page styles - 100% Perfect Responsive */
+
+/* Light theme support for documentation */
+body.light-theme .docs-content pre {
+	background: #f6f8fa;
+	border-color: var(--muted);
+}
+
+body.light-theme .docs-content pre code {
+	color: #24292f;
+}
+
+body.light-theme .terminal {
+	background: #f6f8fa;
+	border-color: var(--muted);
+}
+
+body.light-theme .terminal code {
+	color: #24292f;
+}
+
+body.light-theme .command,
+body.light-theme .api-method,
+body.light-theme .issue {
+	background: #f6f8fa;
+	border-color: var(--muted);
+}
+
+body.light-theme .note {
+	background: rgba(9,105,218,0.05);
+	border-color: rgba(9,105,218,0.2);
+}
+
+body.light-theme .mobile-nav-overlay {
+	background: rgba(255,255,255,0.95);
+}
+
+body.light-theme .mobile-nav-content {
+	background: var(--bg-0);
+}
 .docs-main {
 	display: grid;
 	grid-template-columns: 280px 1fr;
