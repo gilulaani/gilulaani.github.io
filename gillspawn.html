@@ -3,15 +3,15 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>@gill/gillcombat — Minecraft Combat Plugin Documentation</title>
-	<meta name="description" content="Documentation for @gill/gillcombat - A powerful Minecraft combat plugin that prevents interruptions during player duels." />
+	<title>@gill/gillspawn — Minecraft Spawn Plugin Documentation</title>
+	<meta name="description" content="Documentation for @gill/gillspawn - A powerful Minecraft spawn plugin that prevents interruptions during player duels." />
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 	<link rel="stylesheet" href="styles.css" />
-	<link rel="stylesheet" href="gillcombatdocs.css" />
+	<link rel="stylesheet" href="gillspawndocs.css" />
 	<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%23121a22'/><text x='50' y='62' font-size='54' text-anchor='middle' fill='%2390e0ef' font-family='JetBrains Mono, monospace'>G</text></svg>">
 
 	<!-- Prism.js for YAML syntax highlighting -->
@@ -85,8 +85,8 @@
 
 		<article class="docs-content">
 			<header class="docs-header">
-				<h1>@gill/gillcombat</h1>
-				<p class="subtitle">Powerful Minecraft Combat Plugin</p>
+				<h1>@gill/gillspawn</h1>
+				<p class="subtitle">Basic Minecraft Spawn Plugin</p>
 				<div class="meta">
 					<span class="version">v1.0.0</span>
 					<span class="tag">Minecraft</span>
@@ -96,19 +96,18 @@
 
 			<section id="overview">
 				<h2>Overview</h2>
-				<p><code>@gill/gillcombat</code> is a robust Minecraft plugin that prevents combat logging, blocks commands during combat, and supports AFK detection, WorldGuard, and more. Perfect for PvP servers that want fair fights and no interruptions.</p>
+				<p><code>@gill/gillspawn</code> is a Minecraft spawn plugin with spawn protection, Warumup features.</p>
 				
 				<ul>
-					<li><strong>Combat Tagging:</strong> Prevents players from escaping combat unfairly</li>
-					<li><strong>Command Blocking:</strong> Disables specific commands while tagged</li>
-					<li><strong>World & Region Support:</strong> Disable tagging in certain worlds/regions</li>
-					<li><strong>AFK Detection:</strong> Marks inactive players and prevents abuse</li>
-					<li><strong>Customizable Messages:</strong> Full color code/message support</li>
-					<li><strong>Action Bar Countdown:</strong> Visual combat timer for players</li>
+					<li><strong>Lightning Fast</strong> Optimized for performance with minimal server impact</li>
+					<li><strong>Easy Configuration</strong> Simple YAML-based configuration</li>
+					<li><strong>Advanced Features</strong> Countdown, permissions, custom messages</li>
+					<li><strong>Reloadable without restart</strong> using /gspawn reload</li>
+					<li><strong>Lightweight & beginner-friendly</strong> setup</li>
 				</ul>
 
 				<div class="download-section">
-					<a href="https://www.spigotmc.org/resources/gillcombat-free-premium-combat-plugin-1-21.128607" class="btn btn-primary download-btn" download="gillcombat-v1.0.0.jar">
+					<a href="https://www.spigotmc.org/resources/gillspawn-basic-spawn-plugin-1-21.128660" class="btn btn-primary download-btn" download="gillspawn-v1.0.0.jar">
 						<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 							<path d="M12 16L7 11H17L12 16Z"/>
 							<path d="M12 4V16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -133,7 +132,7 @@
 					<li>Download the latest JAR from the button above</li>
 					<li>Place it in your <code>plugins/</code> folder</li>
 					<li>Restart your server</li>
-					<li>Configure <code>plugins/GillCombat/config.yml</code></li>
+					<li>Configure <code>plugins/GillSpawn/config.yml</code></li>
 				</ol>
 
 				<div class="note">
@@ -144,142 +143,286 @@
 			<section id="configuration">
 				<h2>Configuration</h2>
 				
-				<p>The main configuration file is located at <code>plugins/GillCombat/config.yml</code>:</p>
+				<p>The main configuration file is located at <code>plugins/GillSpawn/config.yml</code>:</p>
 
-				<pre><code class="language-yaml"># GillCombat Configuration
-# List of worlds where tagging is disabled
-disabled-worlds: 
-  - test
-					
-# List of WorldGuard region names where tagging is disabled
-disabled-regions:
-  - test
-					
-# List of commands that tagged players cannot use
-disabled-commands:
-  - /spawn
-  - /hub
-  - /lobby
-					
-# Duration (in seconds) a player remains tagged after being hit
-tag-duration: 15
-					
-# Time (in seconds) of inactivity before a player is marked AFK
-afk-timeout-seconds: 5
-					
-# Enable debug logging
-debug: false
-					
-# Enable action bar countdown display
-enable-action-bar: true
-					
-# Action bar update frequency (in ticks, 5 = 0.25 seconds)
-action-bar-update-frequency: 5
-					
-# Custom messages with color code support
+				<pre><code class="language-yaml"># GillSpawn Configuration
+# Author: gillani
+# Version: 1.0.0
+                    
+# ===========================================
+# GENERAL SETTINGS
+# ===========================================
+general:
+# Enable/disable movement cancellation
+movement-cancel-enabled: true
+                      
+# Enable/disable action bar display
+actionbar-enabled: true
+                      
+# Enable/disable warmup system
+warmup-enabled: true
+                      
+# Warmup time in seconds (0 to disable)
+warmup-time: 3
+                    
+                    
+# ===========================================
+# WARMUP SETTINGS
+# ===========================================
+warmup:
+# Warmup action bar message (no chat messages)
+actionbar-message: "&aTeleporting in (%time%s)"
+                      
+# Warmup cancelled message
+cancelled-message: "&cTeleportation cancelled! You moved!"
+                      
+# Warmup sound settings
+sound:
+enabled: true
+sound: "BLOCK_NOTE_BLOCK_PLING"
+volume: 0.3
+pitch: 1.0
+# Play sound every second during warmup
+interval: 1
+                    
+# ===========================================
+# TELEPORT SETTINGS
+# ===========================================
+teleport:
+# Success message
+success-message: "&aTeleported to spawn!"
+                      
+# Sound settings
+sound:
+enabled: true
+sound: "ENTITY_ENDERMAN_TELEPORT"
+volume: 1.0
+pitch: 1.0
+                      
+# Particle effects
+effects:
+enabled: true
+# Particle type (SPELL_WITCH, PORTAL, SMOKE_LARGE, etc.)
+particle: "PORTAL"
+# Number of particles
+count: 50
+# Particle spread
+spread: 1.0
+                    
+# ===========================================
+# MESSAGES
+# ===========================================
 messages:
-  tagged: '&c⚔ You have been tagged by {player}! ⚔'
-  untagged: '&a✅ Combat tag has expired!'
-  cannot-hit: '&c❌ Cannot hit player in combat!'
-  reload: '&a✅ Config reloaded successfully!'
-  afk-cant-hit: '&c❌ Cannot hit AFK player!'
-  combat-status: '&e⚔ Combat Status: {status}'
-  combat-time-remaining: '&c⏰ {time}s remaining!'
-  afk-now: '&e💤 You are AFK. Move to return.'
-  afk-back: '&7No longer AFK.'
-  combat-actionbar: '&c⚔ Combat &7({time}s)'
-					
-# Sound played when trying to hit AFK players
-afk-hit-sound: ENTITY_EXPERIENCE_ORB_PICKUP</code></pre>
+                      
+help-header: "&6&lGillSpawn Help"
+                      
+# Help command footer
+help-footer: "&7Use &6/gspawn &7to teleport to spawn!"
+                      
+# No permission message
+no-permission: "&cYou don't have permission to use this command!"
+                      
+# Player only command
+player-only: "&cThis command can only be executed by a player!"
+                      
+# Spawn set success
+spawn-set: "&aSpawn point set for world &6%world%&a!"
+                      
+# Spawn set failed
+spawn-set-failed: "&cFailed to set spawn point!"
+                      
+# Spawn removed
+spawn-removed: "&aSpawn point removed for world &6%world%&a!"
+                      
+# No spawn set
+no-spawn-set: "&cNo spawn point was set for this world!"
+                      
+# Already on cooldown
+already-cooldown: "&cYou are already teleporting! Please wait..."
+                      
+# Configuration reloaded
+config-reloaded: "&a✅ Configuration reloaded!"
+                    
+# ===========================================
+# COMMAND SETTINGS
+# ===========================================
+commands:
+# Main command aliases
+main-aliases: [spawn, gillspawn, gspawn]
+                      
+# Set command aliases
+set-aliases: [gspawnset, gspawn-set, setspawn]
+                      
+# Remove command aliases
+remove-aliases: [gspawnremove, gspawn-remove, removespawn]
+                    
+# ===========================================
+# PERMISSION NODES
+# ===========================================
+# - gillspawn.* - Access to all GillSpawn commands
+# - gillspawn.set - Allows setting spawn points
+# - gillspawn.remove - Allows removing spawn points
+# - gillspawn.teleport - Allows teleporting to spawn
+# - gillspawn.bypass - Bypass cooldown for teleporting to spawn
+# - gillspawn.help - Access to help command
+# - gillspawn.reload - Reload the plugin configuration</code></pre>
 			</section>
 
 			<section id="commands">
 				<h2>Commands</h2>
 				
 				<div class="command">
-					<h3><code>/gcombat reload</code></h3>
-					<p>Reload the plugin configuration.</p>
+					<h3><code>/gspawn</code></h3>
+					<p>Teleport to spawn - Main command to teleport to spawn with warmup timer</p>
 				</div>
 
 				<div class="command">
-					<h3><code>/gcombat disableworld [world]</code></h3>
-					<p>Disable combat tagging in a specific world.</p>
+					<h3><code>/gspawn help</code></h3>
+					<p>Show help menu - Display all available commands and features</p>
 				</div>
 
 				<div class="command">
-					<h3><code>/gcombat enableworld [world]</code></h3>
-					<p>Enable combat tagging in a specific world.</p>
+					<h3><code>/gspawn set</code></h3>
+					<p>Set spawn point - Set spawn point for current world</p>
 				</div>
 
 				<div class="command">
-					<h3><code>/gcombat untag [player]</code></h3>
-					<p>Remove combat tag from a player.</p>
+					<h3><code>/gspawn remove</code></h3>
+					<p>Remove spawn point - Remove spawn point for current world</p>
 				</div>
 
 				<div class="command">
-					<h3><code>/gcombat list</code></h3>
-					<p>List all currently tagged players.</p>
+					<h3><code>/gspawn reload</code></h3>
+					<p>Reload configuration - Reload all plugin settings</p>
 				</div>
 
-				<div class="command">
-					<h3><code>/gcombat worldguard</code></h3>
-					<p>Check WorldGuard status.</p>
-				</div>
-
-				<div class="command">
-					<h3><code>/tag</code></h3>
-					<p>Check your combat status.</p>
-				</div>
-			
-				<div class="command">
-					<h3><code>/combat</code></h3>
-					<p>Check your combat status.</p>
-				</div>
-			
-				<div class="command">
-					<h3><code>/combatpartners</code></h3>
-					<p>Show who you are currently in combat with.</p>
-				</div>
 			</section>
 
 			<section id="examples">
 				<h2>Examples</h2>
 				
 				<h3>Sample Configuration</h3>
-				<pre><code class="language-yaml"># Example: Custom combat configuration
-disabled-worlds: 
-  - creative
-  - build
-					
-disabled-regions:
-  - safe-zone
-  - spawn
-					
-disabled-commands:
-  - /spawn
-  - /hub
-  - /lobby
-  - /home
-					
-tag-duration: 20
-afk-timeout-seconds: 10
-debug: false
-enable-action-bar: true
-action-bar-update-frequency: 5
-					
+				<pre><code class="language-yaml"># GillSpawn Configuration
+# Author: gillani
+# Version: 1.0.0
+                                        
+# ===========================================
+# GENERAL SETTINGS
+# ===========================================
+general:
+# Enable/disable movement cancellation
+ movement-cancel-enabled: true
+                                          
+# Enable/disable action bar display
+actionbar-enabled: true
+                                          
+# Enable/disable warmup system
+warmup-enabled: true
+                                          
+# Warmup time in seconds (0 to disable)
+warmup-time: 3
+                                        
+                                        
+# ===========================================
+# WARMUP SETTINGS
+# ===========================================
+warmup:
+# Warmup action bar message (no chat messages)
+actionbar-message: "&aTeleporting in (%time%s)"
+                                          
+# Warmup cancelled message
+cancelled-message: "&cTeleportation cancelled! You moved!"
+                                          
+# Warmup sound settings
+sound:
+enabled: true
+volume: 0.3
+
+# Play sound every second during warmup
+pitch: 1.0
+interval: 1
+                                        
+# ===========================================
+# TELEPORT SETTINGS
+# ===========================================
+teleport:
+# Success message
+success-message: "&aTeleported to spawn!"
+                                          
+# Sound settings
+sound:
+enabled: true
+sound: "ENTITY_ENDERMAN_TELEPORT"
+volume: 1.0
+pitch: 1.0
+                                          
+# Particle effects
+effects:
+enabled: true
+# Particle type (SPELL_WITCH, PORTAL, SMOKE_LARGE, etc.)
+particle: "PORTAL"
+# Number of particles
+count: 50
+# Particle spread
+spread: 1.0
+                                        
+# ===========================================
+# MESSAGES
+# ===========================================
 messages:
-  tagged: '&c⚔ You have been tagged by {player}! ⚔'
-  untagged: '&a✅ Combat tag has expired!'
-  cannot-hit: '&c❌ Cannot hit player in combat!'
-  reload: '&a✅ Config reloaded successfully!'
-  afk-cant-hit: '&c❌ Cannot hit AFK player!'
-  combat-status: '&e⚔ Combat Status: {status}'
-  combat-time-remaining: '&c⏰ {time}s remaining!'
-  afk-now: '&e💤 You are AFK. Move to return.'
-  afk-back: '&7No longer AFK.'
-  combat-actionbar: '&c⚔ Combat &7({time}s)'
-					
-afk-hit-sound: ENTITY_EXPERIENCE_ORB_PICKUP</code></pre>
+                                          
+help-header: "&6&lGillSpawn Help"
+                                          
+# Help command footer
+help-footer: "&7Use &6/gspawn &7to teleport to spawn!"
+                                          
+# No permission message
+no-permission: "&cYou don't have permission to use this command!"
+                                          
+# Player only command
+player-only: "&cThis command can only be executed by a player!"
+                                          
+# Spawn set success
+spawn-set: "&aSpawn point set for world &6%world%&a!"
+                                          
+# Spawn set failed
+spawn-set-failed: "&cFailed to set spawn point!"
+                                          
+# Spawn removed
+spawn-removed: "&aSpawn point removed for world &6%world%&a!"
+                                          
+# No spawn set
+no-spawn-set: "&cNo spawn point was set for this world!"
+                                          
+# Already on cooldown
+already-cooldown: "&cYou are already teleporting! Please wait..."
+                                          
+# Configuration reloaded
+config-reloaded: "&a✅ Configuration reloaded!"
+                                        
+# ===========================================
+# COMMAND SETTINGS
+# ===========================================
+commands:
+# Main command aliases
+main-aliases: [spawn, gillspawn, gspawn]
+                                          
+# Set command aliases
+set-aliases: [gspawnset, gspawn-set, setspawn]
+                                          
+# Remove command aliases
+remove-aliases: [gspawnremove, gspawn-remove, removespawn]
+                                        
+# ===========================================
+# PERMISSION NODES
+# ===========================================
+# - gillspawn.* - Access to all GillSpawn commands
+# - gillspawn.set - Allows setting spawn points
+# - gillspawn.remove - Allows removing spawn points
+# - gillspawn.teleport - Allows teleporting to spawn
+# - gillspawn.bypass - Bypass cooldown for teleporting to spawn
+# - gillspawn.help - Access to help command
+# - gillspawn.reload - Reload the plugin configuration</code></pre>
 
 				
 
@@ -313,17 +456,17 @@ afk-hit-sound: ENTITY_EXPERIENCE_ORB_PICKUP</code></pre>
 					</article>
 					<article class="plugin">
 						<header>
-							<h3>@gill/gillspawn</h3>
+							<h3>@gill/gillcombat</h3>
 							<div class="tags">
 								<span class="tag">Minecraft</span>
 							</div>
 						</header>
-						<p>A Minecraft spawn plugin with spawn protection, Warumup features.</p>
+						<p>Advanced combat plugin that prevents interruptions during player duels. No more interference when two players are fighting each other.</p>
 						<div class="actions">
-							<a class="link" href="gillspawn.html">Docs</a>
+							<a class="link" href="gillcombat.html">Docs</a>
 						</div>
 					</article>
-					<article class="plugin">
+                    <article class="plugin">
                         <header>
                             <h3>@gill/gillcontrol</h3>
                             <div class="tags">
@@ -336,7 +479,7 @@ afk-hit-sound: ENTITY_EXPERIENCE_ORB_PICKUP</code></pre>
                             <span class="link disabled">Coming Soon</span>
                         </div>
                     </article>
-				</div>
+                </div>
 			</section>
 		</article>
 	</main>
